@@ -35,7 +35,7 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
   .then(v => v.json())
   .then(data => {
       
-      /*dbPromise.then(function(db) {
+      dbPromise.then(function(db) {
         var tx = db.transaction('currencyConverter');
         var converterStore = tx.objectStore('currencyConverter');
       
@@ -49,7 +49,7 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
             }
         }
       
-      });*/
+      });
       
       
       
