@@ -69,8 +69,8 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
       rate = amount * rate;
 
       document.getElementById("convertedRate").value=rate;
-    }
-  });*/
+    }*/
+  });
 }
 
 //GET THE LIST OF COUNTRIES
