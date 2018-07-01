@@ -68,7 +68,7 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
               
               document.getElementById("convertedRate").value=rate;
               
-        }
+            };
       });
    });
 }
