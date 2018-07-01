@@ -55,11 +55,13 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
         var tx = db.transaction('currencyConverter');
         var converterStore = tx.objectStore('currencyConverter');
         
-        return converterStore.get(query);
+        var key = converterStore.get(query);
       }).then(function(val) {
+          if(val === undefined) { 
+            console.log('no key');
+          } else {
             console.log('The value of "hello" is:', val);
-      }).catch(function(err){
-            console.log('Not seen');
+          }
       });
       
       
