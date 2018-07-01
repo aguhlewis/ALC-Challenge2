@@ -40,7 +40,6 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
         
         return converterStore.openCursor(query);
       }).then(function(val) {
-        console.log(val);
         if(val === undefined) {
             dbPromise.then(function(db){
                 var tx = db.transaction('currencyConverter', 'readwrite');
@@ -61,7 +60,13 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
             }
         } else {
             
-            console.log(val);
+            let currencies = val;
+
+            for(const key in currencies) {
+              let rate = currencies[key].val;
+              rate = amount * rate;
+              
+              document.getElementById("convertedRate").value=rate;
               
         }
       });
