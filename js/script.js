@@ -58,17 +58,10 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
         return converterStore.openCursor(query);
       }).then(function(val) {
         console.log(val);
-        if(val == undefined) {
-            console.log('undefined 1');
-        }
         if(val === undefined) {
             console.log('undefined 2');
-        }
-        if(val == 'undefined') {
-            console.log('undefined 3');
-        }
-        if(val === 'undefined') {
-            console.log('undefined 4');
+        } else {
+            console.log('defined 2');
         }
          
       });
