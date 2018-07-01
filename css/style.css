@@ -12,6 +12,9 @@ html, body {
 }
 
 
+.header-container {
+	box-shadow: 0px 10px 8px #ccc;
+}
 .header {
 	background: #291A2C;
 }
@@ -29,6 +32,23 @@ html, body {
 	text-align: center;
 	padding-top: 1em;
 	margin-top: 0;
+}
+
+
+.body-container {
+	margin-top: 6em;
+	width: 25em;
+	height: 30em;
+	border: 1px solid #ccc;
+	box-shadow: 3px 10px 8px #ccc;
+	padding: 1em;
+	background: #f5f5f5;
+}
+#currencyList1 {
+	margin-top: 6em;
+}
+#amount, #currencyList1, #currencyList2, #convertedRate {
+	margin-bottom: 1em;
 }
 
 
