@@ -60,15 +60,17 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
             }
         } else {
             console.log(val);
-            /*let currencies = val;
+            let currencies = val.results;
+            console.log(currencies);
 
             for(const key in currencies) {
+              console.log(key);
               let rate = currencies[key].val;
               rate = amount * rate;
               
               document.getElementById("convertedRate").value=rate;
               
-            }*/
+            }
          }
       });
    });
