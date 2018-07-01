@@ -62,7 +62,6 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
         } else {
             
             console.log(val);
-            }
               
         }
       });
