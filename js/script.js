@@ -35,19 +35,25 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
   .then(v => v.json())
   .then(data => {
       
-      /*dbPromise.then(function(db) {
+      dbPromise.then(function(db) 
         var tx = db.transaction('currencyConverter');
         var converterStore = tx.objectStore('currencyConverter');
-        if('key':query in converterStore.getall()) {
-            document.write('Data Exists');
-        } else {
-            document.write('Data Does Not Exist');
+      
+        var req = converterStore.openCursor(query);
+        req.onsuccess = function(e) {
+            var cursor = e.target.target;
+            if(cursor) {
+                document.write('key already exists');
+            } else {
+                document.write('key does not exists');
+            }
         }
-      });*/
+      
+      });
       
       
       
-    dbPromise.then(function(db){
+    /*dbPromise.then(function(db){
         var tx = db.transaction('currencyConverter', 'readwrite');
         var converterStore = tx.objectStore('currencyConverter');
         converterStore.put(data, query);
@@ -64,7 +70,7 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
 
       document.getElementById("convertedRate").value=rate;
     }
-  });
+  });*/
 }
 
 //GET THE LIST OF COUNTRIES
