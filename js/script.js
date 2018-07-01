@@ -56,12 +56,13 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
         var converterStore = tx.objectStore('currencyConverter');
         
         var key = converterStore.get(query);
-      }).then(function(val) {
-          if(val === undefined) { 
-            console.log('no key');
-          } else {
-            console.log('The value of "hello" is:', val);
-          }
+        key.onsuccess = function() {
+            if(key.result === undefined) {
+                console.log('undefined');
+            } else {
+                console.log('defined bitches');
+            }
+        }
       });
       
       
