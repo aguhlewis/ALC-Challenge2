@@ -1,5 +1,5 @@
-// INDEXEDDB
-var dbPromise = idb.open('currencyConverter', 1, function(upgradeDb) {
+// OPEN AN INDEXEDDB DATABASE IF IT DOES NOT EXIST
+const dbPromise = idb.open('currencyConverter', 1, upgradeDb => {
     upgradeDb.createObjectStore('currencyConverter');
 });
 
@@ -17,9 +17,9 @@ document.getElementById('current-date').innerHTML=today;
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker
   .register('./sw.js', { scope: './'})
-  .then(function(registeration) {
+  .then(registeration => {
       console.log('Service Worker Registered');
-  }).catch(function(err) {
+  }).catch(err => {
     console.log('Service Worker Not Registered');
   });
 }
@@ -34,19 +34,19 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
   fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${query}`)
   .then(v => v.json())
   .then(data => {
-      dbPromise.then(function(db) {
-        var tx = db.transaction('currencyConverter');
-        var converterStore = tx.objectStore('currencyConverter');
+      dbPromise.then(db => {
+        const tx = db.transaction('currencyConverter');
+        const converterStore = tx.objectStore('currencyConverter');
         
         return converterStore.openCursor(query);
-      }).then(function(val) {
+      }).then(val => {
         if(val === undefined) {
-            dbPromise.then(function(db){
-                var tx = db.transaction('currencyConverter', 'readwrite');
-                var converterStore = tx.objectStore('currencyConverter');
+            dbPromise.then(db => {
+                const tx = db.transaction('currencyConverter', 'readwrite');
+                const converterStore = tx.objectStore('currencyConverter');
                 converterStore.put(data, query);
                 return tx.complete;
-            }).then(function() {
+            }).then(() => {
                 console.log('Rates Added');
             });
 
@@ -102,5 +102,3 @@ function submit_form() {
 
   convertCurrency(amount, currency1_text, currency2_text);
 }
-
-
