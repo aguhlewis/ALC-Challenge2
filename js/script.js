@@ -71,6 +71,7 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
               
         }
       });
+   });
 }
 
 //GET THE LIST OF COUNTRIES
