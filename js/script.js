@@ -59,12 +59,9 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
               document.getElementById("convertedRate").value=rate;
             }
         } else {
-            console.log(val);
             let currencies = val._cursor.value.results;
-            console.log(currencies);
 
             for(const key in currencies) {
-              console.log(key);
               let rate = currencies[key].val;
               rate = amount * rate;
               
