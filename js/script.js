@@ -34,23 +34,6 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
   fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${query}`)
   .then(v => v.json())
   .then(data => {
-      
-      /*dbPromise.then(function(db) {
-        var tx = db.transaction('currencyConverter');
-        var converterStore = tx.objectStore('currencyConverter');
-      
-        var req = converterStore.openCursor(query);
-        req.onsuccess = function(e) {
-            var cursor = e.target.target;
-            if(cursor) {
-                document.write('key already exists');
-            } else {
-                document.write('key does not exists');
-            }
-        }
-      
-      });*/
-      
       dbPromise.then(function(db) {
         var tx = db.transaction('currencyConverter');
         var converterStore = tx.objectStore('currencyConverter');
@@ -59,33 +42,36 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
       }).then(function(val) {
         console.log(val);
         if(val === undefined) {
-            console.log('undefined 2');
+            dbPromise.then(function(db){
+                var tx = db.transaction('currencyConverter', 'readwrite');
+                var converterStore = tx.objectStore('currencyConverter');
+                converterStore.put(data, query);
+                return tx.complete;
+            }).then(function() {
+                console.log('Rates Added Yeah');
+            });
+
+            let currencies = data.results;
+
+            for(const key in currencies) {
+              let rate = currencies[key].val;
+              rate = amount * rate;
+
+              document.getElementById("convertedRate").value=rate;
+            }
+          });
         } else {
-            console.log('defined 2');
+            let currencies = val.results;
+
+            for(const key in currencies) {
+              let rate = currencies[key].val;
+              rate = amount * rate;
+
+              document.getElementById("convertedRate").value=rate;
+            }
+              
         }
-         
       });
-      
-      
-      
-    dbPromise.then(function(db){
-        var tx = db.transaction('currencyConverter', 'readwrite');
-        var converterStore = tx.objectStore('currencyConverter');
-        converterStore.put(data, query);
-        return tx.complete;
-    }).then(function() {
-        console.log('Rates Added Yeah');
-    });
-    
-    let currencies = data.results;
-
-    for(const key in currencies) {
-      let rate = currencies[key].val;
-      rate = amount * rate;
-
-      document.getElementById("convertedRate").value=rate;
-    }
-  });
 }
 
 //GET THE LIST OF COUNTRIES
