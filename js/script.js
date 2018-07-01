@@ -35,7 +35,7 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
   .then(v => v.json())
   .then(data => {
       
-      dbPromise.then(function(db) {
+      /*dbPromise.then(function(db) {
         var tx = db.transaction('currencyConverter');
         var converterStore = tx.objectStore('currencyConverter');
         if('key':query in converterStore.getall()) {
@@ -43,11 +43,11 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
         } else {
             document.write('Data Does Not Exist');
         }
-      });
+      });*/
       
       
       
-    /*dbPromise.then(function(db){
+    dbPromise.then(function(db){
         var tx = db.transaction('currencyConverter', 'readwrite');
         var converterStore = tx.objectStore('currencyConverter');
         converterStore.put(data, query);
@@ -63,7 +63,7 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
       rate = amount * rate;
 
       document.getElementById("convertedRate").value=rate;
-    }*/
+    }
   });
 }
 
