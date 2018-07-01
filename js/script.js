@@ -60,7 +60,7 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
             }
         } else {
             console.log(val);
-            let currencies = val.results;
+            let currencies = val._cursor.value.results;
             console.log(currencies);
 
             for(const key in currencies) {
