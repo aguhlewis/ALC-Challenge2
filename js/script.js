@@ -58,6 +58,8 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
         return converterStore.get(query);
       }).then(function(val) {
             console.log('The value of "hello" is:', val);
+      }).catch(function(err){
+            console.log('Not seen');
       });
       
       
