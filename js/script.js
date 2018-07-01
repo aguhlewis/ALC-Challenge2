@@ -62,7 +62,7 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
             } else {
                 console.log('defined bitches');
             }
-        }
+        };
       });
       
       
