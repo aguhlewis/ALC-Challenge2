@@ -27,50 +27,50 @@ if ('serviceWorker' in navigator) {
 //FUNCTION TO CONVERT A CURRENCY
 function convertCurrency(amount, fromCurrency, toCurrency) {
 
-  fromCurrency = encodeURIComponent(fromCurrency);
-  toCurrency = encodeURIComponent(toCurrency);
-  const query = `${fromCurrency}_${toCurrency}`;
+	fromCurrency = encodeURIComponent(fromCurrency);
+	toCurrency = encodeURIComponent(toCurrency);
+	const query = `${fromCurrency}_${toCurrency}`;
 
-  fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${query}`)
-  .then(v => v.json())
-  .then(data => {
-      dbPromise.then(db => {
-        const tx = db.transaction('currencyConverter');
-        const converterStore = tx.objectStore('currencyConverter');
-        
-        return converterStore.openCursor(query);
-      }).then(val => {
-        if(val === undefined) {
-            dbPromise.then(db => {
-                const tx = db.transaction('currencyConverter', 'readwrite');
-                const converterStore = tx.objectStore('currencyConverter');
-                converterStore.put(data, query);
-                return tx.complete;
-            }).then(() => {
-                console.log('Rates Added');
-            });
+		dbPromise.then(db => {
+			const tx = db.transaction('currencyConverter');
+			const converterStore = tx.objectStore('currencyConverter');
 
-            let currencies = data.results;
+			return converterStore.openCursor(query);
+		}).then(val => {
+		if(val === undefined) {
+			fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${query}`)
+			.then(v => v.json())
+			.then(data => {
+				dbPromise.then(db => {
+					const tx = db.transaction('currencyConverter', 'readwrite');
+					const converterStore = tx.objectStore('currencyConverter');
+					converterStore.put(data, query);
+					return tx.complete;
+				}).then(() => {
+					console.log('Rates Added');
+				});
+				
+				let currencies = data.results;
 
-            for(const key in currencies) {
-              let rate = currencies[key].val;
-              rate = amount * rate;
+				for(const key in currencies) {
+					let rate = currencies[key].val;
+					rate = amount * rate;
 
-              document.getElementById("convertedRate").value=rate;
-            }
-        } else {
-            let currencies = val._cursor.value.results;
+					document.getElementById("convertedRate").value=rate;
+				}
+			});
+		} else {
+			let currencies = val._cursor.value.results;
 
-            for(const key in currencies) {
-              let rate = currencies[key].val;
-              rate = amount * rate;
-              
-              document.getElementById("convertedRate").value=rate;
-              
-            }
-         }
-      });
-   });
+			for(const key in currencies) {
+				let rate = currencies[key].val;
+				rate = amount * rate;
+
+				document.getElementById("convertedRate").value=rate;
+
+			}
+		}
+	});
 }
 
 //GET THE LIST OF COUNTRIES
