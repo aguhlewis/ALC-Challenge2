@@ -59,7 +59,6 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
 
               document.getElementById("convertedRate").value=rate;
             }
-          });
         } else {
             let currencies = val.results;
 
