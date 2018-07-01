@@ -53,7 +53,7 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
       
       
       
-    /*dbPromise.then(function(db){
+    dbPromise.then(function(db){
         var tx = db.transaction('currencyConverter', 'readwrite');
         var converterStore = tx.objectStore('currencyConverter');
         converterStore.put(data, query);
@@ -69,7 +69,7 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
       rate = amount * rate;
 
       document.getElementById("convertedRate").value=rate;
-    }*/
+    }
   });
 }
 
