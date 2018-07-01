@@ -2,12 +2,12 @@ self.addEventListener('install', function(event) {
 	event.waitUntil(
 		caches.open('alc-with-google3.0').then(function(cache) {
 			return cache.addAll([
-				'./css/bootstrap.min.css',
-				'./css/font-awesome.css',
-				'./css/style.css',
-				'./js/bootstrap.min.js',
-				'./js/script.js',
-				'./index.html'
+				'css/bootstrap.min.css',
+				'css/font-awesome.css',
+				'css/style.css',
+				'js/bootstrap.min.js',
+				'js/script.js',
+				'index.html'
 			]);
 		})
 	);
