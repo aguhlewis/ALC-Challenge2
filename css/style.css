@@ -68,6 +68,7 @@ html, body {
 
 @media only screen and (max-width: 600px) {
 	.body-container {
-		margin-top: 1em;
+		margin-top: 0em;
+		background: red;
 	}
 }
