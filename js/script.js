@@ -55,9 +55,10 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
         var tx = db.transaction('currencyConverter');
         var converterStore = tx.objectStore('currencyConverter');
         
-        var key = converterStore.get(query);
+        var key = converterStore.openCursor(query);
         key.onsuccess = function() {
-            if(key.result === undefined) {
+            var cursor = key.result;
+            if(!result) {
                 console.log('undefined');
             } else {
                 console.log('defined bitches');
