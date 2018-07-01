@@ -59,8 +59,8 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
               document.getElementById("convertedRate").value=rate;
             }
         } else {
-            
-            let currencies = val;
+            console.log(val);
+            /*let currencies = val;
 
             for(const key in currencies) {
               let rate = currencies[key].val;
@@ -68,7 +68,7 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
               
               document.getElementById("convertedRate").value=rate;
               
-            }
+            }*/
          }
       });
    });
