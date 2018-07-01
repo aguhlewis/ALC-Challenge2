@@ -48,7 +48,7 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
                 converterStore.put(data, query);
                 return tx.complete;
             }).then(function() {
-                console.log('Rates Added Yeah');
+                console.log('Rates Added');
             });
 
             let currencies = data.results;
@@ -60,13 +60,8 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
               document.getElementById("convertedRate").value=rate;
             }
         } else {
-            let currencies = val.results;
-
-            for(const key in currencies) {
-              let rate = currencies[key].val;
-              rate = amount * rate;
-
-              document.getElementById("convertedRate").value=rate;
+            
+            console.log(val);
             }
               
         }
