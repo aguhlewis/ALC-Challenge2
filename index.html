@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="HandheldFriendly" content="true">
+		
+		<title> Homepage </title>
+		
+		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="./css/bootstrap.min.css" />
+		<link rel="stylesheet" href="./css/font-awesome.css" /> 
+	</head>
+
+	<body >
+		<!--[if lt IE 7]>
+		<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+			<div class="header-container">
+				<div class="row">
+					<div class="header col-md-12 col-sm-12 col-xs-12">
+						<p>Currency Converter</p>
+					</div>
+
+					<div class="header-date col-md-12 col-sm-12 col-xs-12">
+						<p id="current-date"></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="body-container">
+						<select class="form-control" id="currencyList1">
+
+						</select>
+		
+						<input type="text" id="amount" placeholder="Enter Amount" class="form-control">
+						<select class="form-control" id="currencyList2">
+
+						</select>
+		
+						<input type="text" id="convertedRate" placeholder="" class="form-control" readonly>
+						<input type="submit" value="submit" class="form-control" onclick="submit_form()">
+
+				
+			</div>
+
+			<div class="footer-container">
+				<p>Created By Lewis</p>
+			</div>
+			
+		<script src="./idb.js"></script>
+		<script src="./js/bootstrap.min.js" ></script>
+		<script src="./js/script.js"></script>
+		
+
+	</body>
+</html>
