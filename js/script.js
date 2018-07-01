@@ -55,15 +55,22 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
         var tx = db.transaction('currencyConverter');
         var converterStore = tx.objectStore('currencyConverter');
         
-        var key = converterStore.openCursor(query);
-        key.onsuccess = function() {
-            var cursor = key.result;
-            if(!result) {
-                console.log('undefined');
-            } else {
-                console.log('defined bitches');
-            }
-        };
+        return converterStore.openCursor(query);
+      }).then(function(val) {
+        console.log(val);
+        if(val == undefined) {
+            console.log('undefined 1');
+        }
+        if(val === undefined) {
+            console.log('undefined 2');
+        }
+        if(val == 'undefined') {
+            console.log('undefined 3');
+        }
+        if(val === 'undefined') {
+            console.log('undefined 4');
+        }
+         
       });
       
       
